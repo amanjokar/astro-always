@@ -8,6 +8,7 @@ import { asset, href, langOf, NAV, swap, wa } from "@/lib/site";
 
 export function Header() {
   const path = usePathname();
+  const here = path.replace(/(.)\/$/, "$1"); // trailingSlash URLs end in "/"
   const lang = langOf(path);
   const [open, setOpen] = useState(false);
   useEffect(() => void (document.documentElement.lang = lang), [lang]);
@@ -31,7 +32,7 @@ export function Header() {
           {NAV.map(([p, label]) => {
             const to = href(lang, p);
             return (
-              <Link key={p} href={to} className={`nav-link ${path === to ? "text-gold-hi after:!scale-100" : "text-bone/80 hover:text-gold-hi"}`}>
+              <Link key={p} href={to} className={`nav-link ${here === to ? "text-gold-hi after:!scale-100" : "text-bone/80 hover:text-gold-hi"}`}>
                 {label}
               </Link>
             );
@@ -61,7 +62,7 @@ export function Header() {
             const to = href(lang, p);
             return (
               <li key={p}>
-                <Link href={to} onClick={() => setOpen(false)} className={`block py-3 font-display text-lg ${path === to ? "text-gold-hi" : "text-bone"}`}>
+                <Link href={to} onClick={() => setOpen(false)} className={`block py-3 font-display text-lg ${here === to ? "text-gold-hi" : "text-bone"}`}>
                   {label}
                 </Link>
               </li>

@@ -28,15 +28,15 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Astro Always — Neetu Arora | Vedic Jyotish Courses", template: "%s · Astro Always" },
-  description: "Neetu Arora ke saath Vedic Jyotish, Kundali Vishleshan aur Ank Jyotish + Vastu ke live online courses.",
+  title: { default: "Astro Always — Neetu Arora | Vedic Astrology Courses", template: "%s · Astro Always" },
+  description: "Live online courses in Vedic Astrology, Kundali Analysis and Numerology + Vastu with Neetu Arora.",
   icons: { icon: asset("/logo.webp") },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="hi"
+      lang="en"
       className={`${cinzel.variable} ${hind.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">

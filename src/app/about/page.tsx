@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { About } from "@/views/about";
 
-export const metadata: Metadata = { title: "About", description: "Neetu Arora aur Astro Always ki kahani." };
+export const metadata: Metadata = { title: "About", description: "The story of Neetu Arora and Astro Always." };
 
 export default function Page() {
-  return <About lang="hi" />;
+  return <About lang="en" />;
 }

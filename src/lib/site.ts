@@ -7,10 +7,11 @@ export const PHONE = "+91 83601 03610";
 export const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const asset = (p: string) => BASE + p;
 
-export const langOf = (path: string): Lang => (path === "/en" || path.startsWith("/en/") ? "en" : "hi");
-export const href = (lang: Lang, path: string) => (lang === "en" ? (path === "/" ? "/en" : "/en" + path) : path);
+// English lives at the root (the default for first-time visitors); Hindi under /hi.
+export const langOf = (path: string): Lang => (path === "/hi" || path.startsWith("/hi/") ? "hi" : "en");
+export const href = (lang: Lang, path: string) => (lang === "hi" ? (path === "/" ? "/hi" : "/hi" + path) : path);
 // The same page in the other language.
-export const swap = (path: string) => (langOf(path) === "en" ? path.replace(/^\/en/, "") || "/" : href("en", path));
+export const swap = (path: string) => (langOf(path) === "hi" ? path.replace(/^\/hi/, "") || "/" : href("hi", path));
 
 const WA_DEFAULT = {
   hi: "Namaste Neetu ji, mujhe Astro Always ke courses ke baare mein jaankari chahiye.",

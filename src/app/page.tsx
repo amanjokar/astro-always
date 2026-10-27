@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Home } from "@/views/home";
 
-export const metadata: Metadata = { title: { absolute: "Astro Always — Neetu Arora | Vedic Jyotish Courses" }, description: "Neetu Arora ke saath Vedic Jyotish, Kundali Vishleshan aur Ank Jyotish + Vastu ke live online courses." };
+export const metadata: Metadata = { title: { absolute: "Astro Always â€” Neetu Arora | Vedic Astrology Courses" }, description: "Live online courses in Vedic Astrology, Kundali Analysis and Numerology + Vastu with Neetu Arora." };
 
 export default function Page() {
-  return <Home lang="hi" />;
+  return <Home lang="en" />;
 }
