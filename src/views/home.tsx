@@ -29,7 +29,6 @@ const T = {
       ["Live class", "Sawaal wahi poochiye, jawab wahi paaiye"],
       ["Saath hamesha", "Course ke baad bhi WhatsApp group"],
     ],
-    photo: "Neetu ji ki photo yahan",
     story: "Neetu ji ki poori kahani →",
     coursesH: "Seekhiye, us guru se jo khud roz kundali padhti hain.",
     syllabus: "Poora syllabus dekhiye →",
@@ -71,7 +70,6 @@ const T = {
       ["Live classes", "Ask your question and get the answer right there"],
       ["Always with you", "A WhatsApp group even after the course ends"],
     ],
-    photo: "Neetu ji's photo goes here",
     story: "Read Neetu ji's full story →",
     coursesH: "Learn from a teacher who reads charts every single day.",
     syllabus: "See the full syllabus →",
@@ -153,11 +151,11 @@ export function Home({ lang }: { lang: Lang }) {
         <p aria-hidden data-parallax="30" className={`${watermark} -left-10 top-6 text-[14rem]`}>ज्योतिष</p>
         <div className="relative mx-auto w-full max-w-sm">
           <div data-arch className="relative aspect-[4/5] overflow-hidden rounded-t-full border border-gold/40 bg-gradient-to-b from-panel to-void p-3">
-            <div className="flex h-full flex-col items-center justify-center overflow-hidden rounded-t-full border border-gold/20 bg-[radial-gradient(circle_at_50%_35%,#2a1f3d,transparent_70%)]">
-              <div data-parallax="8">
-                <Image src={asset("/logo.webp")} alt="Astro Always logo" width={200} height={200} className="animate-[float_6s_ease-in-out_infinite] rounded-full shadow-[0_0_90px_-10px_#d6a43b99]" />
+            <div className="relative h-full overflow-hidden rounded-t-full border border-gold/20">
+              <div data-parallax="6" className="absolute inset-x-0 -inset-y-[8%]">
+                <Image src={asset("/neetu-arora.jpg")} alt="Neetu Arora, founder of Astro Always" fill sizes="384px" className="object-cover object-[50%_30%]" />
               </div>
-              <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">{t.photo}</p>
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
             </div>
           </div>
           <p className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-gold/40 bg-void px-5 py-2 font-display text-sm text-gold-hi">

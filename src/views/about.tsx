@@ -10,7 +10,6 @@ const T = {
     eyebrow: "About · Neetu Arora",
     title: ["Jyotish ko ", "ghar-ghar", " tak le jaana."],
     intro: "Astro Always ki shuruaat ek seedhe vichaar se hui: jyotish har kisi ko samajh aana chahiye, sirf panditon ko nahi.",
-    photo: "Neetu ji ki photo yahan",
     hello: "Namaste, main Neetu Arora hoon.",
     story: [
       "Pichhle 15 saal se main Vedic Jyotish seekh rahi hoon aur sikha rahi hoon. Shuruaat mein maine dekha ki log jyotish se darte hain: dosh, graha, mehenge upay. Mujhe laga ki agar log khud samjhein, to darr apne aap chala jayega.",
@@ -37,7 +36,6 @@ const T = {
     eyebrow: "About · Neetu Arora",
     title: ["Taking astrology into ", "every home", "."],
     intro: "Astro Always began with a simple idea: everyone should be able to understand astrology, not just priests.",
-    photo: "Neetu ji's photo goes here",
     hello: "Hello, I am Neetu Arora.",
     story: [
       "For 15 years I have been learning and teaching Vedic Astrology. Early on I saw that people were afraid of astrology: doshas, planets, expensive remedies. I felt that if people understood it themselves, the fear would go away on its own.",
@@ -72,9 +70,9 @@ export function About({ lang }: { lang: Lang }) {
 
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:py-16">
         <div data-arch className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-t-full border border-gold/40 bg-gradient-to-b from-panel to-void p-3">
-          <div className="flex h-full flex-col items-center justify-center rounded-t-full border border-gold/20 bg-[radial-gradient(circle_at_50%_35%,#2a1f3d,transparent_70%)]">
-            <Image src={asset("/logo.webp")} alt="Astro Always logo" width={200} height={200} className="animate-[float_6s_ease-in-out_infinite] rounded-full shadow-[0_0_90px_-10px_#d6a43b99]" />
-            <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">{t.photo}</p>
+          <div className="relative h-full overflow-hidden rounded-t-full border border-gold/20">
+            <Image src={asset("/neetu-arora.jpg")} alt="Neetu Arora, founder of Astro Always" fill sizes="384px" priority className="object-cover object-[50%_30%]" />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
           </div>
         </div>
         <div>
