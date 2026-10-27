@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #08070b;
+  --color-night: #110e17;
+  --color-panel: #17131f;
+  --color-gold: #d6a43b;
+  --color-gold-hi: #f6d98b;
+  --color-bone: #eee5d3;
+  --color-mist: #9c93a8;
+  --color-ember: #c2602f;
+
+  --font-display: var(--nf-display), serif;
+  --font-sans: var(--nf-sans), system-ui, sans-serif;
+  --font-mono: var(--nf-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  color-scheme: dark;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+/* Lenis needs native smooth scroll off */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 70% -10%, #2a1f3d55, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 40%, #d6a43b0d, transparent 60%),
+    var(--color-void);
+  overflow-x: hidden;
+}
+
+/* film grain over everything, very faint */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-void);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-hi);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.gold-text {
+  background: linear-gradient(100deg, #a8782a 0%, #f6d98b 35%, #d6a43b 55%, #fff1c4 70%, #b5852f 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sheen 8s linear infinite;
+}
+
+@keyframes sheen {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.btn-gold {
+  background: linear-gradient(180deg, #f6d98b, #d6a43b 55%, #a8782a);
+  color: var(--color-void);
+  box-shadow: 0 0 0 1px #f6d98b66 inset, 0 10px 30px -10px #d6a43b99;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-gold:hover {
+  box-shadow: 0 0 0 1px #fff1c4 inset, 0 16px 50px -8px #d6a43bee;
+}
+/* light sweep across gold buttons on hover */
+.btn-gold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, #ffffffaa 50%, transparent 70%);
+  translate: -120% 0;
+  transition: translate 0.8s ease;
+}
+.btn-gold:hover::before {
+  translate: 120% 0;
+}
+
+[data-magnetic],
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-line {
+  border: 1px solid #d6a43b66;
+  color: var(--color-gold-hi);
+  transition: color 0.4s, border-color 0.4s;
+}
+.btn-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-gold);
+  border-radius: inherit;
+  scale: 1 0;
+  transform-origin: bottom;
+  transition: scale 0.45s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.btn-line:hover {
+  color: var(--color-void);
+  border-color: var(--color-gold);
+}
+.btn-line:hover::after {
+  scale: 1 1;
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--color-gold-hi);
+  scale: 0 1;
+  transition: scale 0.4s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.nav-link:hover::after {
+  scale: 1 1;
+}
+
+/* cards: glare + border light that follow the cursor (vars set in motion.tsx) */
+[data-tilt] {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+[data-tilt]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), #f6d98b26, transparent 45%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+[data-tilt]:hover::after {
+  opacity: 1;
+}
+[data-tilt]:hover {
+  border-color: #d6a43b99;
+  box-shadow: 0 30px 80px -30px #d6a43b55;
+}
+
+
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+@keyframes drip {
+  0% { translate: 0 -100%; }
+  100% { translate: 0 200%; }
+}
+@keyframes float {
+  50% { translate: 0 -14px; }
+}
+@keyframes pulse-glow {
+  50% { opacity: 0.5; scale: 1.15; }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
